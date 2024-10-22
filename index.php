@@ -25,7 +25,7 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
   <meta content="indonesia" property="og:title">
   <meta content="Hai!, selamat datang, daftarkan diri anda untuk mendapatkan akses" property="og:description">
   <meta content="favicon.jpg" property="og:image">
-  <title>Registration - Indonesia power</title>
+  <title>Registration - Festival HHSSE PLN</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styl.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -230,19 +230,19 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
             $qur = "UPDATE pers_attribute_ext SET attr_value4 = '$nip' WHERE person_id = '$res[0]'";
             $ha = pg_query($qur) or die("Error:". pg_last_error());
             $re = pg_fetch_row($ha);
-      $lurah = "UPDATE pers_attribute_ext SET attr_value3 = '$kelurahan' WHERE person_id = '$res[0]'";
+            $lurah = "UPDATE pers_attribute_ext SET attr_value3 = '$kelurahan' WHERE person_id = '$res[0]'";
             $harah = pg_query($lurah) or die("Error:". pg_last_error());
             $reh = pg_fetch_row($harah);
-      $kot = "UPDATE pers_attribute_ext SET attr_value7 = '$kota' WHERE person_id = '$res[0]'";
+            $kot = "UPDATE pers_attribute_ext SET attr_value7 = '$kota' WHERE person_id = '$res[0]'";
             $hakot = pg_query($kot) or die("Error:". pg_last_error());
             $rekot = pg_fetch_row($hakot);
-      $mat = "UPDATE pers_attribute_ext SET attr_value2 = '$alamat' WHERE person_id = '$res[0]'";
+            $mat = "UPDATE pers_attribute_ext SET attr_value2 = '$alamat' WHERE person_id = '$res[0]'";
             $hamat = pg_query($mat) or die("Error:". pg_last_error());
             $remat = pg_fetch_row($hamat);
-      $kec = "UPDATE pers_attribute_ext SET attr_value5 = '$kecamatan' WHERE person_id = '$res[0]'";
+            $kec = "UPDATE pers_attribute_ext SET attr_value5 = '$kecamatan' WHERE person_id = '$res[0]'";
             $hacet = pg_query($kec) or die("Error:". pg_last_error());
             $recet = pg_fetch_row($hacet);
-      $vinsi = "UPDATE pers_attribute_ext SET attr_value8 = '$provinsi' WHERE person_id = '$res[0]'";
+            $vinsi = "UPDATE pers_attribute_ext SET attr_value8 = '$provinsi' WHERE person_id = '$res[0]'";
             $havin = pg_query($vinsi) or die("Error:". pg_last_error());
             $revin = pg_fetch_row($havin);
             //print_r($re);
@@ -297,14 +297,12 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
   }
   ?>
   <div class="content">
-    <br>
-    <br>
     <div>
-  <center><img src="logo-ip.png" alt="indonesia power" class="img-fluid"/></center>
+  <center><img src="logo-pln2.png" alt="Logo PLN" class="img-fluid"/></center>
     </div>
     <br>
     <form action="" method="POST" enctype="multipart/form-data">
-      <div class="title">Registration</div>
+    <div class="title">Regis Festival HSSE PLN</div>
       <div class="user-details">
   <!-- <div class="input-box">
           <span class="details">KELURAHAN</span>
@@ -328,13 +326,25 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
         </div> -->
         <div class="input-box">
           <span class="details">NAMA LENGKAP</span>
-          <input type="text" name="name" placeholder="Enter your name" onkeyup="this.value = this.value.toUpperCase()" >
+          <input type="text" name="name" placeholder="Masukan Nama Lengkap" onkeyup="this.value = this.value.toUpperCase()" >
         </div>
         <div class="input-box">
           <span class="details">NIP</span>
           <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" required >
         </div>
         <div class="input-box">
+          <span class="details">UNIT / DIVISI</span>
+          <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" >
+        </div>
+        <div class="input-box">
+          <span class="details">JABATAN</span>
+          <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" >
+        </div>
+        <div class="input-box">
+          <span class="details">NO TELPON</span>
+          <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" >
+        </div>
+        <!--<div class="input-box">
           <span class="details">Department</span>
           <?php
             function select($a, $b = array(), $c = array(), $d = '', $e = '')
@@ -386,7 +396,7 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
             echo select('dept',$op,1);
             ?>
             <input type="text" name="newdept" id="color" style='display:none;' placeholder="Enter your department" onkeyup="this.value = this.value.toUpperCase()"/>
-        </div>
+        </div> -->
         <!-- <div class="input-box">
           <span class="details">License Plate</span>
           <input type="text" name="plat" placeholder="Enter license plate" onkeyup="this.value = this.value.toUpperCase()" >
