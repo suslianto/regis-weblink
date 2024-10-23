@@ -18,16 +18,12 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <link href="favicon.jpg" rel="shortcut icon" type="image/png">
-  <meta content="indonesia, power, indonesiapower, powerindonesia, indonesia power, power indonesia, pln, pln indonesia power," name="keywords">
-  <meta content="Hai!, selamat datang, daftarkan diri anda untuk mendapatkan akses" name="description">
-  <meta content="summary" name="twitter:card">
-  <meta content="indonesia" property="og:site_name">
-  <meta content="indonesia" property="og:title">
-  <meta content="Hai!, selamat datang, daftarkan diri anda untuk mendapatkan akses" property="og:description">
-  <meta content="favicon.jpg" property="og:image">
+  <meta content=">Registration - Festival HHSSE PLN" property="og:title">
+  <meta content="Hai!, Selamat datang di Festival HSSE PLN, Daftarkan diri anda untuk mendapatkan akses" property="og:description">
+  <meta content="assets/img/favicon.jpg" property="og:image">
   <title>Registration - Festival HHSSE PLN</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="styl.css">
+  <link rel="stylesheet" href="assets/css/style/style.css">
+  <link rel="stylesheet" href="assets/css/style/styl.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
@@ -71,12 +67,9 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
   if (isset($_POST["submit"])){
     $name = @$_POST["name"];
     $nip = @$_POST["nip"];
-    $kelurahan = @$_POST["lurah"];
-    $kota = @$_POST["kota"];
-    $alamat = @$_POST["alamat"];
-    $kecamatan = @$_POST["kecamatan"];
-    $provinsi = @$_POST["provinsi"];
-    $plat = @$_POST["plat"];
+    $telpon = @$_POST["telpon"];
+    $jabatan = @$_POST["jabatan"];
+    $divisi = @$_POST["divisi"];
     $gender = @$_POST["gender"];
     //$level = @$_POST["level"];
     $time = new Datetime("now");
@@ -230,21 +223,15 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
             $qur = "UPDATE pers_attribute_ext SET attr_value4 = '$nip' WHERE person_id = '$res[0]'";
             $ha = pg_query($qur) or die("Error:". pg_last_error());
             $re = pg_fetch_row($ha);
-            $lurah = "UPDATE pers_attribute_ext SET attr_value3 = '$kelurahan' WHERE person_id = '$res[0]'";
+            $lurah = "UPDATE pers_attribute_ext SET attr_value13 = '$telpon' WHERE person_id = '$res[0]'";
             $harah = pg_query($lurah) or die("Error:". pg_last_error());
             $reh = pg_fetch_row($harah);
-            $kot = "UPDATE pers_attribute_ext SET attr_value7 = '$kota' WHERE person_id = '$res[0]'";
+            $kot = "UPDATE pers_attribute_ext SET attr_value14 = '$jabatan' WHERE person_id = '$res[0]'";
             $hakot = pg_query($kot) or die("Error:". pg_last_error());
             $rekot = pg_fetch_row($hakot);
-            $mat = "UPDATE pers_attribute_ext SET attr_value2 = '$alamat' WHERE person_id = '$res[0]'";
+            $mat = "UPDATE pers_attribute_ext SET attr_value6 = '$divisi' WHERE person_id = '$res[0]'";
             $hamat = pg_query($mat) or die("Error:". pg_last_error());
             $remat = pg_fetch_row($hamat);
-            $kec = "UPDATE pers_attribute_ext SET attr_value5 = '$kecamatan' WHERE person_id = '$res[0]'";
-            $hacet = pg_query($kec) or die("Error:". pg_last_error());
-            $recet = pg_fetch_row($hacet);
-            $vinsi = "UPDATE pers_attribute_ext SET attr_value8 = '$provinsi' WHERE person_id = '$res[0]'";
-            $havin = pg_query($vinsi) or die("Error:". pg_last_error());
-            $revin = pg_fetch_row($havin);
             //print_r($re);
             //print_r($re);
             echo "
@@ -253,7 +240,7 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
                           icon: 'success',
                           title: 'Registrasi successfully'
                         })
-                        setTimeout(function() {window.location.href = 'index.php';}, 2000);
+                        setTimeout(function() {window.location.href = '/regis-weblink';}, 2000);
                     </script>
                   ";
           } else if ($data_json["code"] == -63) {
@@ -298,118 +285,41 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
   ?>
   <div class="content">
     <div>
-  <center><img src="logo-pln2.png" alt="Logo PLN" class="img-fluid"/></center>
+  <center><img src="assets/img/logo-pln2.png" alt="Logo PLN" class="img-fluid"/></center>
     </div>
     <br>
     <form action="" method="POST" enctype="multipart/form-data">
     <div class="title">Regis Festival HSSE PLN</div>
       <div class="user-details">
-  <!-- <div class="input-box">
-          <span class="details">KELURAHAN</span>
-          <input type="text" name="lurah" placeholder="Enter your kelurahan" onkeyup="this.value = this.value.toUpperCase()" >
-        </div>
-  <div class="input-box">
-          <span class="details">KECAMATAN</span>
-          <input type="text" name="kecamatan" placeholder="Enter your kecamatan" onkeyup="this.value = this.value.toUpperCase()" >
-        </div>
-  <div class="input-box">
-          <span class="details">KOTA</span>
-          <input type="text" name="kota" placeholder="Enter your kota" onkeyup="this.value = this.value.toUpperCase()" >
-        </div>
-  <div class="input-box">
-          <span class="details">PROVINSI</span>
-          <input type="text" name="provinsi" placeholder="Enter your provinsi" onkeyup="this.value = this.value.toUpperCase()" >
-        </div>
-  <div class="input-box">
-          <span class="details">ALAMAT</span>
-          <input type="text" name="alamat" placeholder="Enter your alamat" onkeyup="this.value = this.value.toUpperCase()" >
-        </div> -->
         <div class="input-box">
           <span class="details">NAMA LENGKAP</span>
           <input type="text" name="name" placeholder="Masukan Nama Lengkap" onkeyup="this.value = this.value.toUpperCase()" >
         </div>
         <div class="input-box">
           <span class="details">NIP</span>
-          <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" required >
+          <input type="text" name="nip" placeholder="Masukan NIP" onkeyup="this.value = this.value.toUpperCase()" >
         </div>
         <div class="input-box">
           <span class="details">UNIT / DIVISI</span>
-          <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" >
+          <input type="text" name="divisi" placeholder="Masukan Unit / Divisi" onkeyup="this.value = this.value.toUpperCase()" >
         </div>
         <div class="input-box">
           <span class="details">JABATAN</span>
-          <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" >
+          <input type="text" name="jabatan" placeholder="Masukan Jabatan" onkeyup="this.value = this.value.toUpperCase()" >
         </div>
         <div class="input-box">
           <span class="details">NO TELPON</span>
-          <input type="text" name="nip" placeholder="Enter your nip" onkeyup="this.value = this.value.toUpperCase()" >
+          <input type="number" name="telpon" placeholder="Masukan No Telpon" onkeyup="this.value = this.value.toUpperCase()" >
         </div>
-        <!--<div class="input-box">
-          <span class="details">Department</span>
-          <?php
-            function select($a, $b = array(), $c = array(), $d = '', $e = '')
-            {
-            $set='';
-            if(is_array($d)){
-                foreach ($d as $key => $value) {
-                  $set.=' '.$key.'="'.$value.'" ';
-                }
-              }
-            else{
-                $set=$d;
-              }
-              $data = '';
-            if (!is_array($c)) {
-                $c = array(
-                      $c
-                  );
-              }
-            if (count($c) === 0) {
-                  if (isset($_POST[$a])) {
-                      $c = array(
-                          $_POST[$a]
-                      );
-                  }
-              }
-              if ($d != '') {
-                  $d = ' ' . $d;
-              }
-              if ($e != '') {
-                  $e = ' ' . $e;
-              }
-              foreach ($b as $key => $val) {
-                  $sel = (in_array($key, $c)) ? ' selected="selected"' : '';
-                  $data .= "\t\t\t\t\t\t<option value=\"" . $key . "\"" . $sel . ">" . (string) $val . "</option>\n";
-              }
-              return '<select class='."selectpicker".' name="' . $a . '" '. $set . '"' . $e . ' onchange='."CheckColors(this.value);".' data-dropup-auto='."false".'>' . "\n" . $data . "\t\t\t\t\t" . '<option value='."others".'>OTHERS</option></select>' . "\n\t\t\t\t";
-
-            }
-          $op=null;
-          $qu = "SELECT * FROM auth_department";
-          $resu = pg_query($qu) or die("Error:". pg_last_error());
-          //$resul = pg_fetch_row($resu);
-          //print_r($resul);
-          while ($row = pg_fetch_row($resu)) {
-              $op[$row[13]]=$row[15];
-              // array_push($nilai, intval($json["data"]["code"]));
-            }
-            echo select('dept',$op,1);
-            ?>
-            <input type="text" name="newdept" id="color" style='display:none;' placeholder="Enter your department" onkeyup="this.value = this.value.toUpperCase()"/>
-        </div> -->
-        <!-- <div class="input-box">
-          <span class="details">License Plate</span>
-          <input type="text" name="plat" placeholder="Enter license plate" onkeyup="this.value = this.value.toUpperCase()" >
-        </div> -->
         <div class="input-box">
-          <span class="details">Upload Your photo/selfie</span>
+          <span class="details">Upload Foto / Selfie</span>
           <div class="fileUploadInput">
           <label>✨ Pastikan wajah terlihat jelas</label>
           <input type="file" name="filename" required/>
           <button>+</button></div>
         </div>
       </div>
-      <!-- <div class="gender-details">
+      <div class="gender-details">
         <input type="radio" name="gender" id="dot-1" value="M">
         <input type="radio" name="gender" id="dot-2" value="F">
         <input type="radio" name="gender" id="dot-3" value="M">
@@ -417,20 +327,18 @@ $co = pg_connect("host=".$host." port=5442 dbname=".$base." user=".$user." passw
         <div class="category">
           <label for="dot-1">
           <span class="dot one"></span>
-          <span class="gender">Male</span>
+          <span class="gender">Pria</span>
         </label>
         <label for="dot-2">
           <span class="dot two"></span>
-          <span class="gender">Female</span>
+          <span class="gender">Wanita</span>
         </label>
         <label for="dot-3">
           <span class="dot three"></span>
-          <span class="gender">Prefer not to say</span>
+          <span class="gender">Tidak ingin memberi tahu</span>
           </label>
         </div>
-      </div> -->
-      <br>
-      <br>
+      </div>
       <div class="button">
         <input type="submit" name="submit" value="Register">
       </div>
